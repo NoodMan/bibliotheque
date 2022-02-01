@@ -32,5 +32,6 @@ $router->get("/note/:id", "App\Controller\NoteController@add");
 $router->post("/note/:id", "App\Controller\NoteController@add");
 
 $router->get("/deletebook/:id", "App\Controller\BookController@delete");
+$router->get("/deletenote/:id", "App\Controller\NoteController@delete");
 
 $router->run();

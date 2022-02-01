@@ -59,4 +59,17 @@ class NoteController
         Router::redirect("books/$bookId");
         
     }
+
+    public function delete(string $id)
+    { 
+            $em = EntityManagerHelper::getEntityManager();
+            $repository = new EntityRepository($em, new ClassMetadata("App\Entity\Note"));
+
+            $note = $repository->find($id);
+
+            $em->remove($note);
+            $em->flush();
+
+            include (__DIR__ . "/../Vues/Note/deletenote.php"); // fonctionne grace a Amelie
+        }
 }
