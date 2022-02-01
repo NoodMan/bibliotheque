@@ -43,18 +43,47 @@ class Book
      */
     private int $n_isbn;
 
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private int $available;
 
+     /**
+     * @ORM\Column(type="integer")
+     */
+    private int $borrowed;
+    
 
-    public function __construct(string $title, string $summary, User $author, User $editor, int $n_isbn)
+    public function __construct(string $title, string $summary, User $author, User $editor, int $n_isbn, int $available, int $borrowed)
     {
         $this->title = $title;
         $this->summary = $summary;
         $this->author = $author;
         $this->editor = $editor;
         $this->n_isbn = $n_isbn;
+        $this->available = $available;
+        $this->borrowed = $borrowed;
+
+    }
+    
+    /**
+     * Get the value of borrowed
+     */
+    public function getBorrowed()
+    {
+            return $this->borrowed;
     }
 
+    /**
+     * Set the value of borrowed
+     */
+    public function setBorrowed($borrowed): self
+    {
+            $this->borrowed = $borrowed;
 
+            return $this;
+    }
+    
     /**
      * Get the value of id
      *
@@ -205,4 +234,27 @@ class Book
         return $this;
     }
 
+    /**
+     * Get the value of available
+     *
+     * @return int
+     */
+    public function getAvailable(): int
+    {
+        return $this->available;
+    }
+
+    /**
+     * Set the value of available
+     *
+     * @param int $available
+     *
+     * @return self
+     */
+    public function setAvailable(int $available): self
+    {
+        $this->available = $available;
+
+        return $this;
+    }
 }
